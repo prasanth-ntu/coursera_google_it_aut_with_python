@@ -11,6 +11,9 @@
   - [Code style](#code-style)
 - [Notes: Week 3](#notes-week-3)
   - [Recursion](#recursion)
+- [Notes: Week 4](#notes-week-4)
+  - [Methods](#methods)
+    - [`format`](#format)
 - [To clarify](#to-clarify)
 
 # Notes: Week 1
@@ -53,6 +56,43 @@ Keywords are reserved words that are used to construct instructions (e.g., `for`
 - 2 components: Base case and Recursive case
 - In some languages, there will usually be a limit on how many times we can call a recursive funciton recursively
   - In Python, we can call a recursive function 1000 times
+
+# Notes: Week 4
+## Methods
+A function that applies to a specific class. Let's look at an example
+ ```
+  fruit = 'apple'
+  fruit.index('p') # Returns 1
+  fruit.index('le') # Returns 3
+  ```
+
+### `format` 
+- `format` method automatically handles any conversion between data types
+- 
+```
+>>> name = 'Batman'
+>>> number = len(name)
+>>> print('{} has {} letters in it'.format(name, number))
+Batman has 6 letters in it
+>>> print('{name} has {no} letters in it'.format(name=name, no=number))
+Batman has 6 letters in it
+>>> print('{name} has {no} letters in it, wohoo {name}!'.format(name=name, no=number))
+Batman has 6 letters in it, wohoo Batman!
+```
+
+`{:>.2f}`
+- `:` to separate it from the field name if we hav specified one
+- `>` aligns text to the right
+- `.2` means 2 digits after deicmal .
+- `f` means float number
+
+```
+>>> print ('{:>10.2f} value formatted'.format(pi))
+      3.14 value formatted
+>>> print ('{:<10.2f} value formatted'.format(pi))
+3.14       value formatted
+
+```
 
 
 # To clarify
