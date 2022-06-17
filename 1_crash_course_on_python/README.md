@@ -16,6 +16,8 @@
     - [string `format`](#string-format)
   - [Lists](#lists)
     - [List comprehension](#list-comprehension)
+- [Notes: Week 5](#notes-week-5)
+  - [OOP](#oop)
 - [To clarify](#to-clarify)
 
 # Notes: Week 1
@@ -108,9 +110,20 @@ Batman has 6 letters in it, wohoo Batman!
 ### List comprehension
 *For more details, refer the files in the corresponding folder.*
 
-
 <br>
 
+# Notes: Week 5
+## OOP
+In OOP, concepts are modelled as classes and objects.
+- **Classes** represents and define concepts/ideas, **objects** are instances of classes
+- Almost everything we have seen so far in Python is an object, including
+  - Numbers
+  - Lists
+  - Strings
+  - Dictionaries
+- Classes also have attributes and methods associated with it: 
+  - **Attributes**: Characteristics associated to a type/class
+  - **Methods**: Functions associated to a type/class
 # To clarify
 - Does break work only on the inner most loop or all the outer loops as well?
 - 
