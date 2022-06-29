@@ -13,7 +13,11 @@
   - [Recursion](#recursion)
 - [Notes: Week 4](#notes-week-4)
   - [Methods](#methods)
-    - [`format`](#format)
+    - [string `format`](#string-format)
+  - [Lists](#lists)
+    - [List comprehension](#list-comprehension)
+- [Notes: Week 5](#notes-week-5)
+  - [OOP](#oop)
 - [To clarify](#to-clarify)
 
 # Notes: Week 1
@@ -66,7 +70,7 @@ A function that applies to a specific class. Let's look at an example
   fruit.index('le') # Returns 3
   ```
 
-### `format` 
+### string `format` 
 - `format` method automatically handles any conversion between data types
 - 
 ```
@@ -93,7 +97,33 @@ Batman has 6 letters in it, wohoo Batman!
 3.14       value formatted
 
 ```
+*For more details, refer the files in the corresponding folder.*
 
+## Lists
+- In python, `string` and `list` are both examples of sequences of data. There are other sequences too, which share bunch of similar operations, such as
+  - Iterating over for loops
+  - Indexing
+  - `len` function
+  - `+` to concatenate 2 elements
+  - `in` to verify the presence of element inside the sequences. 
 
+### List comprehension
+*For more details, refer the files in the corresponding folder.*
+
+<br>
+
+# Notes: Week 5
+## OOP
+In OOP, concepts are modelled as classes and objects.
+- **Classes** represents and define concepts/ideas, **objects** are instances of classes
+- Almost everything we have seen so far in Python is an object, including
+  - Numbers
+  - Lists
+  - Strings
+  - Dictionaries
+- Classes also have attributes and methods associated with it: 
+  - **Attributes**: Characteristics associated to a type/class
+  - **Methods**: Functions associated to a type/class
 # To clarify
 - Does break work only on the inner most loop or all the outer loops as well?
+- 
