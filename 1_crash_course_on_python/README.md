@@ -41,7 +41,7 @@ Keywords are reserved words that are used to construct instructions (e.g., `for`
   - Used to store values 
 - Expressions
   - Combination of numbers, symbols or other variables that produce a reslt when evaluated
-- Funcitons
+- Functions
 - Conditional blocks
 
 ## Implicit vs. explicit conversion
@@ -72,7 +72,7 @@ A function that applies to a specific class. Let's look at an example
 
 ### string `format` 
 - `format` method automatically handles any conversion between data types
-- 
+ 
 ```
 >>> name = 'Batman'
 >>> number = len(name)
