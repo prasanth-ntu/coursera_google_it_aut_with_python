@@ -18,6 +18,8 @@
     - [List comprehension](#list-comprehension)
 - [Notes: Week 5](#notes-week-5)
   - [OOP](#oop)
+  - [Classes and Methods](#classes-and-methods)
+  - [Code Reuse](#code-reuse)
 - [To clarify](#to-clarify)
 
 # Notes: Week 1
@@ -117,13 +119,28 @@ Batman has 6 letters in it, wohoo Batman!
 In OOP, concepts are modelled as classes and objects.
 - **Classes** represents and define concepts/ideas, **objects** are instances of classes
 - Almost everything we have seen so far in Python is an object, including
-  - Numbers
-  - Lists
-  - Strings
-  - Dictionaries
+  - Numbers (`int`, `float`)
+  - Lists (`list`)
+  - Strings (`str`)
+  - Dictionaries (`dict`)
+## Classes and Methods
 - Classes also have attributes and methods associated with it: 
   - **Attributes**: Characteristics associated to a type/class
-  - **Methods**: Functions associated to a type/class
+  - **Methods**: Functions associated to a type/class, that operates on the attributes of a specific (and single) instance of a class
+- **Instance variables**: Variables that have different values for different instances of the same class.
+- Some of the Special methods of a Class
+  - `__init__()` - Constructor method
+  - `__str__()`
+- ** Doc string**: a short text explanation of what something does. Can be added to a method, function, or class 
+
+## Code Reuse
+- **Inheritance**:  Lets you reuse code written for one class in other classes.
+- **Composition**: You can have a situation where two different classes are related, but there is no inheritance going on. This is referred to as composition -- where one class makes use of code contained in another class.
+  > Always initialize the mutable attributes in the constructor (and not on  class level)
+- **Modules**: Used to organize functions, classes, and other data together in a structured way
+    
 # To clarify
 - Does break work only on the inner most loop or all the outer loops as well?
-- 
+- `self` in `class` methods
+  -  These instance methods (methods defined inside the class) can take a parameter called `self`  which represents the instance the method is being executed on.
+  -  > `self` represents the instance
