@@ -131,7 +131,7 @@ In OOP, concepts are modelled as classes and objects.
 - Some of the Special methods of a Class
   - `__init__()` - Constructor method
   - `__str__()`
-- ** Doc string**: a short text explanation of what something does. Can be added to a method, function, or class 
+- **Doc string**: a short text explanation of what something does. Can be added to a method, function, or class 
 
 ## Code Reuse
 - **Inheritance**:  Lets you reuse code written for one class in other classes.
@@ -139,6 +139,13 @@ In OOP, concepts are modelled as classes and objects.
   > Always initialize the mutable attributes in the constructor (and not on  class level)
 - **Modules**: Used to organize functions, classes, and other data together in a structured way
     
+The official [Python documentation](https://docs.python.org/3/) lists all the modules included in the standard library. It even has a turtle in it. 
+
+Pypi is the Python repository and index of an impressive number of modules developed by Python programmers around the world. [Pypi](https://pypi.org/) is the Python repository and index of an impressive number of modules developed by Python programmers around the world. 
+
+*For more details, refer the files in the corresponding folder.*
+
+
 # To clarify
 - Does break work only on the inner most loop or all the outer loops as well?
 - `self` in `class` methods
