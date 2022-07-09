@@ -20,6 +20,9 @@
   - [OOP](#oop)
   - [Classes and Methods](#classes-and-methods)
   - [Code Reuse](#code-reuse)
+- [Notes: Week 6](#notes-week-6)
+  - [Writing a Script from Ground Up](#writing-a-script-from-ground-up)
+  - [Final Project](#final-project)
 - [To clarify](#to-clarify)
 
 # Notes: Week 1
@@ -145,6 +148,25 @@ Pypi is the Python repository and index of an impressive number of modules devel
 
 *For more details, refer the files in the corresponding folder.*
 
+# Notes: Week 6
+## Writing a Script from Ground Up
+- Few stages
+  - Problem statement
+  - Research
+  - Planning/Approach
+  - Writing the Script
+  - Putting it all together
+
+```
+names = ['Charles', 'Alex', 'Kelly', 'Ray']
+sorted(names) # ['Alex', 'Charles', 'Kelly', 'Ray']
+sorted (names, key=len) # ['Ray', 'Alex', 'Kelly', 'Charles']
+```
+
+## Final Project
+
+
+----
 
 # To clarify
 - Does break work only on the inner most loop or all the outer loops as well?
