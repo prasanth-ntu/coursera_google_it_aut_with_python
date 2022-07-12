@@ -164,7 +164,7 @@ sorted (names, key=len) # ['Ray', 'Alex', 'Kelly', 'Charles']
 ```
 
 ## Final Project
-
+> A journey of 1000 miles starts with a single step!
 
 ----
 
