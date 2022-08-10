@@ -90,7 +90,7 @@ Batman has 6 letters in it, wohoo Batman!
 ```
 
 `{:>.2f}`
-- `:` to separate it from the field name if we hav specified one
+- `:` to separate it from the field name if we have specified one
 - `>` aligns text to the right
 - `.2` means 2 digits after deicmal .
 - `f` means float number
