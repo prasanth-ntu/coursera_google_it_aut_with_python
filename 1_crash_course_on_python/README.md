@@ -18,6 +18,11 @@
     - [List comprehension](#list-comprehension)
 - [Notes: Week 5](#notes-week-5)
   - [OOP](#oop)
+  - [Classes and Methods](#classes-and-methods)
+  - [Code Reuse](#code-reuse)
+- [Notes: Week 6](#notes-week-6)
+  - [Writing a Script from Ground Up](#writing-a-script-from-ground-up)
+  - [Final Project](#final-project)
 - [To clarify](#to-clarify)
 
 # Notes: Week 1
@@ -41,7 +46,7 @@ Keywords are reserved words that are used to construct instructions (e.g., `for`
   - Used to store values 
 - Expressions
   - Combination of numbers, symbols or other variables that produce a reslt when evaluated
-- Funcitons
+- Functions
 - Conditional blocks
 
 ## Implicit vs. explicit conversion
@@ -72,7 +77,7 @@ A function that applies to a specific class. Let's look at an example
 
 ### string `format` 
 - `format` method automatically handles any conversion between data types
-- 
+ 
 ```
 >>> name = 'Batman'
 >>> number = len(name)
@@ -85,7 +90,7 @@ Batman has 6 letters in it, wohoo Batman!
 ```
 
 `{:>.2f}`
-- `:` to separate it from the field name if we hav specified one
+- `:` to separate it from the field name if we have specified one
 - `>` aligns text to the right
 - `.2` means 2 digits after deicmal .
 - `f` means float number
@@ -117,13 +122,54 @@ Batman has 6 letters in it, wohoo Batman!
 In OOP, concepts are modelled as classes and objects.
 - **Classes** represents and define concepts/ideas, **objects** are instances of classes
 - Almost everything we have seen so far in Python is an object, including
-  - Numbers
-  - Lists
-  - Strings
-  - Dictionaries
+  - Numbers (`int`, `float`)
+  - Lists (`list`)
+  - Strings (`str`)
+  - Dictionaries (`dict`)
+## Classes and Methods
 - Classes also have attributes and methods associated with it: 
   - **Attributes**: Characteristics associated to a type/class
-  - **Methods**: Functions associated to a type/class
+  - **Methods**: Functions associated to a type/class, that operates on the attributes of a specific (and single) instance of a class
+- **Instance variables**: Variables that have different values for different instances of the same class.
+- Some of the Special methods of a Class
+  - `__init__()` - Constructor method
+  - `__str__()`
+- **Doc string**: a short text explanation of what something does. Can be added to a method, function, or class 
+
+## Code Reuse
+- **Inheritance**:  Lets you reuse code written for one class in other classes.
+- **Composition**: You can have a situation where two different classes are related, but there is no inheritance going on. This is referred to as composition -- where one class makes use of code contained in another class.
+  > Always initialize the mutable attributes in the constructor (and not on  class level)
+- **Modules**: Used to organize functions, classes, and other data together in a structured way
+    
+The official [Python documentation](https://docs.python.org/3/) lists all the modules included in the standard library. It even has a turtle in it. 
+
+Pypi is the Python repository and index of an impressive number of modules developed by Python programmers around the world. [Pypi](https://pypi.org/) is the Python repository and index of an impressive number of modules developed by Python programmers around the world. 
+
+*For more details, refer the files in the corresponding folder.*
+
+# Notes: Week 6
+## Writing a Script from Ground Up
+- Few stages
+  - Problem statement
+  - Research
+  - Planning/Approach
+  - Writing the Script
+  - Putting it all together
+
+```
+names = ['Charles', 'Alex', 'Kelly', 'Ray']
+sorted(names) # ['Alex', 'Charles', 'Kelly', 'Ray']
+sorted (names, key=len) # ['Ray', 'Alex', 'Kelly', 'Charles']
+```
+
+## Final Project
+> A journey of 1000 miles starts with a single step!
+
+----
+
 # To clarify
 - Does break work only on the inner most loop or all the outer loops as well?
-- 
+- `self` in `class` methods
+  -  These instance methods (methods defined inside the class) can take a parameter called `self`  which represents the instance the method is being executed on.
+  -  > `self` represents the instance
