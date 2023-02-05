@@ -1,4 +1,3 @@
-
 # Notes: Week 1 - Introduction to Version Control
 
 - [Notes: Week 1 - Introduction to Version Control](#notes-week-1---introduction-to-version-control)
@@ -8,6 +7,7 @@
     - [First step with Git](#first-step-with-git)
     - [Tracking files](#tracking-files)
     - [The Basic Git Workflow](#the-basic-git-workflow)
+    - [Anatomy](#anatomy)
 
 
 ## Before version control
@@ -244,8 +244,7 @@ $ git commit
  create mode 100644 disk_usage.py
 ```
 
-### Tracking files
-<a name="Tracking_files"></a>
+### Tracking files<a name="Tracking_files"></a>
 Any Git project will consist of three sections.
 1. *`.git` dir*: Contains the history of all the files and changes
 2. *Working tree*: Contains the current state of the project, including the changes we made
@@ -304,4 +303,45 @@ Now, we can see that there are no changes to commit or even stage.
 > So to sum up, we work on modified files in our **working tree**. When they're ready, we staged these files by adding them to the **staging area**. Finally, we commit the changes sitting in our staging area, which takes a snapshot of those files and stores them in the database that lives in the **Git directory**. 
 
 ### The Basic Git Workflow
-Skipped as the steps are similar to [Tracking files](#Tracking_files)
+Skipped as the example show is similar to [Tracking files](#Tracking_files)
+
+4 git commands are repeatedly used
+`init`, `add`, `status`, `commit`
+
+### Anatomy
+**What makes a good *commit* message?**
+Use the following template
+```
+Line 1 (<= 50 characters): Short summary of the commit 
+
+Line 3 onwards (<= 72 characters per line): Full description of the changes which details why they are necessary and anything interesting about them or difficult to understand 
+```
+
+For more details, visit
+- https://commit.style/
+- https://thoughtbot.com/blog/5-useful-tips-for-a-better-commit-message
+
+> **Commit Message:** A short description of the change (up to 50 characters), followed by one or more paragraphs giving more details of the change (if needed).
+
+To see the commit logs, we can use `git log`
+```
+git log
+commit 7dc5534c427eb36a9d1b2857b32c4be44db0d4af (HEAD -> master)
+Author: prasanth-ntu <prasanththegalaxian@gmail.com>
+Date:   Sun Feb 5 06:54:48 2023 +0800
+
+    Added periods at the end of print statements.
+
+commit 8b5b272f7edeb99cd60cb505b81dc038543aeb32
+Author: prasanth-ntu <prasanththegalaxian@gmail.com>
+Date:   Sat Feb 4 18:08:36 2023 +0800
+
+    Add new disk_usage.py file
+```
+**Breakdown of the commit log**
+- `commit 7dc5534c427eb36a9d1b2857b32c4be44db0d4af` is the commit identifier
+- `(HEAD -> master)` tells us that `HEAD` indicator is pointing to the `master` branch
+- `Author: prasanth-ntu <prasanththegalaxian@gmail.com>` - Name and email of the user who made the commit
+- `Date:   Sun Feb 5 06:54:48 2023 +0800` - Date and time the commit was made
+- `    Added periods at the end of print statements.` - The commit message
+
