@@ -18,7 +18,7 @@
     - [Working with Branches](#working-with-branches)
     - [Merging](#merging)
     - [Merge Conflicts](#merge-conflicts)
-    - [Git Branches and Merging Cheat Sjeet](#git-branches-and-merging-cheat-sjeet)
+    - [Git Branches and Merging Cheat Sheet](#git-branches-and-merging-cheat-sheet)
 
 ## Advanced Git Interaction
 ### Skipping the Staging Area
@@ -564,6 +564,7 @@ $ git commit --amend
 ```
 Editer opens up shpwing the commit message and stats. We can see that both files are added for this commit. 
 ![before_amending_commit_message](attachments/before_amending_commit_message.png)
+
 Let's add additional description before commiting as follows.
 ![after_amending_commit_message](attachments/after_amending_commit_message.png)
 
@@ -632,8 +633,8 @@ $ git revert HEAD
 ```
 We can see that git has automatically added the previous commit id, indicating it is a rollback. 
 ![before_amending_git_revert_message](attachments/before_amending_git_revert_message.png)
-Let's add some details on why we are reverting this commit 
-![afteramending_git_revert_message](attachments/after_amending_git_revert_message.png)
+
+Let's add some details on why we are reverting this commit.
 ```ps
  git revert HEAD
 [master 3b40010] Revert "Add call to disk_full function"
@@ -840,14 +841,195 @@ $ git branch
 * master
   new-feature
 ```
-We are still in master branch
+We are still in master branch. To switch to our new branch, use `git checkout` command. The working tree will be updated to match the selected branch including both the files and git history.
+```ps
+$ git checkout new-feature
+Switched to branch 'new-feature'
+$ git branch
+  master
+* new-feature
+```
+
+To create a new branch and checkout immediately in a single command, we can use `git checkout -b <new-branch>` 
+```ps
+git checkout -b even-better-feature
+Switched to a new branch 'even-better-feature'
+```
+Let's create a `free_memory.py` file inside this branch, populate some basic content (incomplete though) and commit.
+```ps
+$ code free_memory.py
+
+$ cat .\free_memory.py
+def main():
+    pass
+
+main()
+
+$ git status              
+On branch even-better-feature
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        free_memory.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add .\free_memory.py
+$ git commit -m "Add an empty free_memory.py"
+[even-better-feature 90691cb] Add an empty free_memory.py
+ 1 file changed, 4 insertions(+)
+ create mode 100644 free_memory.py
+```
+Let's check the last 2 commits. Next to latest commit id, git shows that this where `HEAD` is pointing to and the branch is `even-better-feature`. On the other hand, next to the previous commit, git shows that both the `master` and the `new-feature` branches are pointing to that snapshot of the project. => `even-better-feature` branch is ahead of the `master` branch.
+```ps
+$ git log -2
+commit 90691cb80a61ea55dddf596c78b18e44e68fa895 (HEAD -> even-better-feature)
+Author: prasanth-ntu <prasanththegalaxian@gmail.com>
+Date:   Tue Feb 14 12:15:53 2023 +0800
+
+    Add an empty free_memory.py
+
+commit 8d1a171da55b3a499185940e6281eecd33f4a457 (new-feature, master)
+Author: prasanth-ntu <prasanththegalaxian@gmail.com>
+Date:   Tue Feb 14 11:40:59 2023 +0800
+
+    Revert "Dummy change 1"
+
+    This reverts commit 35ca3eb8a7865f3364df86f9597f2d1054b6336f.
+```
 
 ### Working with Branches
 
+From the results below, we can see that `free_memory.py` exists only in `even-better-feature` branch.
+```ps
+$ git status
+On branch even-better-feature
+nothing to commit, working tree clean
+
+$ ls -l
+total 4
+-rw-r--r-- 1 Prasanth 197121 308 Feb 14 11:40 all_checks.py
+-rw-r--r-- 1 Prasanth 197121 306 Feb  5 10:59 all_checks_new.py
+-rw-r--r-- 1 Prasanth 197121   0 Feb 14 10:03 auto-update.py
+-rw-r--r-- 1 Prasanth 197121 655 Feb  5 06:47 disk_usage.py
+-rw-r--r-- 1 Prasanth 197121  31 Feb 14 12:14 free_memory.py
+-rw-r--r-- 1 Prasanth 197121   0 Feb 14 10:03 gather-information.sh
+
+$ git checkout master
+Switched to branch 'master'
+
+$ ls -l
+total 3
+-rw-r--r-- 1 Prasanth 197121 308 Feb 14 11:40 all_checks.py
+-rw-r--r-- 1 Prasanth 197121 306 Feb  5 10:59 all_checks_new.py
+-rw-r--r-- 1 Prasanth 197121   0 Feb 14 10:03 auto-update.py
+-rw-r--r-- 1 Prasanth 197121 655 Feb  5 06:47 disk_usage.py
+-rw-r--r-- 1 Prasanth 197121   0 Feb 14 10:03 gather-information.sh
+```
+When we do `git checkout <branch-name>` to switch to a different branch, git changes where `HEAD` is pointing. After checking out to `master` branch, we can see that the `HEAD` is pointing to `master` now. The commit from `even-better-feature` branch does not show up at all, and the latest snapshot is the second entry we have seen before.
+> When we switch branches, git will also change files in our working tree and commit history to whatever snapshot of our project in that branch (head is currently pointing to).
+```ps
+$ git log -2
+commit 8d1a171da55b3a499185940e6281eecd33f4a457 (HEAD -> master, new-feature)
+Author: prasanth-ntu <prasanththegalaxian@gmail.com>
+Date:   Tue Feb 14 11:40:59 2023 +0800
+
+    Revert "Dummy change 1"
+
+    This reverts commit 35ca3eb8a7865f3364df86f9597f2d1054b6336f.
+
+commit fe9d9b98be12568182f4dea0cd6bca00dfd9191c
+Author: prasanth-ntu <prasanththegalaxian@gmail.com>
+Date:   Tue Feb 14 11:38:50 2023 +0800
+
+    Revert "Revert "Revert "Add call to disk_full function"""
+
+    During revert, chose wrong commit id
+
+    This reverts commit 49480eb5d0db317b613e7956997c96e14f69833b.
+```
+When we checkout to a branch and commit on it, the changes will be added to the history of that branch. Since `free_memory.py` was commited on another branch, it does not show up in the history/working directory of the master branch.
+
+> `HEAD` floats around like a free spirit.
+
+How does git checkout switch branches? The HEAD is moved to the relevant commit on the specified branch.
+
+We can delete unwanted branches using `git branch -d <branch-name>`
+
+```ps
+$ git branch
+  even-better-feature
+* master
+  new-feature
+$ git branch -d new-feature
+Deleted branch new-feature (was 8d1a171).
+$ git branch
+  even-better-feature
+* master
+```
+If there are changes in the branch we want to delete that have not been merged back into the `master` branch, then git will throw an error.
+ ```ps
+$ git branch -d even-better-feature
+error: The branch 'even-better-feature' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D even-better-feature'.
+```
+To delete a branch whose changes are not merged back into master, run `git branch -D <branch-name>`
+
 ### Merging
+> Merging is a term that Git uses for combining branched data and history together.
 
 ### Merge Conflicts
+Once a new feature that we deevlop in a separate branch is in good shape, we merge the separate branch back into `master` branch. We can do it using `git merge` command which take the independent snapshots and history of one Git branch, and tangle them into another.
 
-### Git Branches and Merging Cheat Sjeet 
+Let's check that we are in `master` branch. Then, let's merge the `even-better-feature` branch into `master` branch. 
+
+```ps
+$ git branch
+  even-better-feature
+* master
+
+$ git merge even-better-feature
+Updating 8d1a171..90691cb
+Fast-forward
+ free_memory.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+ create mode 100644 free_memory.py
+
+$ git log   
+commit 90691cb80a61ea55dddf596c78b18e44e68fa895 (HEAD -> master, even-better-feature)
+Author: prasanth-ntu <prasanththegalaxian@gmail.com>
+Date:   Tue Feb 14 12:15:53 2023 +0800
+
+    Add an empty free_memory.py
+
+commit 8d1a171da55b3a499185940e6281eecd33f4a457
+Author: prasanth-ntu <prasanththegalaxian@gmail.com>
+Date:   Tue Feb 14 11:40:59 2023 +0800
+
+    Revert "Dummy change 1"
+
+    This reverts commit 35ca3eb8a7865f3364df86f9597f2d1054b6336f.
+
+commit fe9d9b98be12568182f4dea0cd6bca00dfd9191c
+:
+```
+As we are on the master branch, the `HEAD` now points at `master`. We can see the `even-better-feature` and `master` branches are now both pointing to the same commit. 
+P.S. We do not see a new commit as it's a fast-forward merge.
+
+> Git uses two different algorithms to perform a merge: **fast-forward** and **three-way merge**.
+
+The merge we performed earlier is an example of **fast-forward** merge. This kind of merge occues when all the commits in the checked out (currently active) branch are also in the branch that's being merged. We can say that the commit history of both the branches does not diverge. In these cases, all Git has to do is update the pointers of the branches to the same commit, and no actual merging needs to take place.  
+
+Before merging:
+![fast_forward_merging_before](attachments/fast_forward_merging_before.png)
+
+After merging using fast-forward:
+![fast_forward_merging_afterpng](attachments/fast_forward_merging_after.png)
+
+On the other hand, a **three-way merge** is performed when the history of the merging branches has divered in some way, and there is not a nice linear path to combine them via fast-forwaring. This happens when a commit is made on one branch after the point when both the branches split. This could have happened if we made a commit on the master branch after creating the other branches such as `even-better-feature`. When this occues, Git will tie the branch histories together with a new commit. And merge the snapshots at the two branch tips with the most recent common ancestor, the commit before the divergence. To do this successfully, Git tries to figure out how to combine both snapshots. If the changes were made in different files, or in different parts of the same file, Git will take both changes and put them together in the result. If instead, the changes are made on the same part of the same file, Git won't know how to merge those changes, and the merge attempt will result in a merge conflict. This sounds scary, we will learn to solve those conflicts in next section.     
+
+![three_way_merge](attachments/three_way_merge.png)
+
+### Git Branches and Merging Cheat Sheet 
+
 
 ---
