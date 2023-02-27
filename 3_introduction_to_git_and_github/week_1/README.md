@@ -122,7 +122,7 @@ VCS - Lets us keep track of changes made to files. By keeping track of the chang
 - Git has a distributed architecture => Every person contributing to a repository has a full copy of the repo on their own local development machine => They can interact with the tracked files without needing a coordinating server, which in turn improves collaboration.
 - Git can work as a standalone program as a server, and as a client
   - We can even use git on a single machine even without a network connection. 
-  - Or we can use it as a server on a machine, wwere we want to host our repo. Then, we can use git to act as a client to access the repo from another machine or even the same one.
+  - Or we can use it as a server on a machine, where we want to host our repo. Then, we can use git to act as a client to access the repo from another machine or even the same one.
 - Git clients can communicate to the git servers over the network using HTTP, SSH, or Git's own specific protocol.
 - We can use it to track private work that we can keep to ourselves or we can share our work with others by hosting a code on public servers like *Github*, *Gitlab* or others. 
 - There are other VCS programs like *Subversion* or *Mercurial* that acts as an alternative to Git.

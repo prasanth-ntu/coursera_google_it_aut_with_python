@@ -31,7 +31,7 @@ Basic git workflow
 
 However, if we are sure that the current small changes are what we want to commit, we can skip staging and go directly to commit using `-a` flag to `git commit` command. This **`-a` flag automatically stages all files that is tracked and modified** before doing this commit, thereby allowing us to skip `git add` step. 
 
-> `git commit -a` is not same as `git add` > `git commit`. `git commit -a` does not work on new files as they are not tracked. **It's just a shortcut to stage any changes to tracked files and commit them in one step**.
+> `git commit -a` is not same as `git add` > `git commit`. Remember, `git commit -a` does not work on new files as they are not tracked. **It's just a shortcut to stage any changes to tracked files and commit them in one step**.
 If the modified files has never been committed to the repo, we still need to use `git add` to track it first.
 
 **Example**
