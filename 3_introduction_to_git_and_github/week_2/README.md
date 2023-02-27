@@ -423,7 +423,7 @@ def main():
 
 main()
 ```
-Let's delete the `check_reboot` function in the above script that would break it.
+Let's delete the `check_reboot` function in the above script that would break it if we run the script.
 ```ps
 $ cat all_checks.py
 import os
@@ -562,7 +562,7 @@ $ git add .\gather-information.sh
 # Lets amend our commit
 $ git commit --amend
 ```
-Editer opens up shpwing the commit message and stats. We can see that both files are added for this commit. 
+Editer opens up showing the commit message and stats. We can see that both files are added for this commit. 
 ![before_amending_commit_message](attachments/before_amending_commit_message.png)
 
 Let's add additional description before commiting as follows.
@@ -715,7 +715,7 @@ index 248a84a..84119d0 100644
 ### Identifying a Commit
 How to revert a commit farther back in time? We can target a specific commit by commit id. 
 
-Commit id - 40 character string is a ``hash`, calculated using cryptographic algorithm called `SHA1`. This `SHA1` takes bunch of data as input (incase of git, the inputs are info that makes up the commit such as commit msg, date, author, and snapshot taken of the working tree), and produces this hash (commit id in case of git) as the output. 
+Commit id - 40 character string is a `hash`, calculated using cryptographic algorithm called `SHA1`. This `SHA1` takes bunch of data as input (incase of git, the inputs are info that makes up the commit such as commit msg, date, author, and snapshot taken of the working tree), and produces this hash (commit id in case of git) as the output. 
 
 Why hash instead of auto-increment integers as commit ids? SHA1 based hash gaurantees the consistency of our repos and data in it. The chances of two commits generating a same hash (a.k.a. collision) is extremely small that it wouldn't happen by chance. If the data is hampered in our repo, git can use the hash to spot the corruption (data we got is not the data we expected). 
 
@@ -797,17 +797,17 @@ So, we successfully managed to revert the commit id that was not the most recent
 
 ### Git Revert Cheat Sheet
 
-[git restore] is used to revert changes to the modified files before they get staged or after they get staged. 
+[`git restore`] is used to revert changes to the modified files before they get staged or after they get staged. 
 
-[git checkout](https://git-scm.com/docs/git-checkout) is effectively used to switch branches.
+[`git checkout`](https://git-scm.com/docs/git-checkout) is effectively used to switch branches.
 
-[git reset](https://git-scm.com/docs/git-reset#_examples) basically resets the repo, throwing away some changes. It’s somewhat difficult to understand, so reading the examples in the documentation may be a bit more useful.
+[`git reset`](https://git-scm.com/docs/git-reset#_examples) basically resets the repo, throwing away some changes. It’s somewhat difficult to understand, so reading the examples in the documentation may be a bit more useful.
 
 There are some other useful articles online, which discuss more aggressive approaches to [resetting the repo](https://jwiegley.github.io/git-from-the-bottom-up/3-Reset/4-doing-a-hard-reset.html).
 
-[git commit --amend](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---amend) is used to make changes to commits after-the-fact, which can be useful for making notes about a given commit.
+[`git commit --amend`](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---amend) is used to make changes to commits after-the-fact, which can be useful for making notes about a given commit.
 
-[git revert](https://git-scm.com/docs/git-revert) makes a new commit which effectively rolls back a previous commit. It’s a bit like an undo command.
+[`git revert`](https://git-scm.com/docs/git-revert) makes a new commit which effectively rolls back a previous commit. It’s a bit like an undo command.
 
 There are a [few ways](https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things) you can rollback commits in Git.
 
@@ -823,7 +823,7 @@ Feel free to read more here:
 
 Branches are an important part of the Git work flow.
 
-In Git, a branch at the most basic level is just a pointer to a particular commit. But more importantly, it represents an independent line of development in a project. Of which the commit it points to is the latest link in a chain of developing history. The default branch that Git creates for you when a new repository initialized is called `master`. All of our examples and development have taken place on this branch so far. The `master` branch is commonly used to represent the known good state of a project. When you want to develop a feature or try something new in your project, you can create a separate branch to do your work without worrying about messing up this current working state. We can merge the branch back into master branch or we can discard oru changes without negative impact to our master branch.
+In Git, a branch at the most basic level is just a pointer to a particular commit. But more importantly, it represents an independent line of development in a project. Of which the commit it points to is the latest link in a chain of developing history. The default branch that Git creates for you when a new repository initialized is called `master` or `main`. All of our examples and development have taken place on this branch so far. The `master` branch is commonly used to represent the known good state of a project. When you want to develop a feature or try something new in your project, you can create a separate branch to do your work without worrying about messing up this current working state. We can merge the branch back into master branch or we can discard our changes without negative impact to our master branch.
 
 Purpose of organizing repositories into branches?
 Enable changes to be worked on without disrupting the most current working state. 
@@ -978,7 +978,7 @@ To delete a branch whose changes are not merged back into master, run `git branc
 > Merging is a term that Git uses for combining branched data and history together.
 
 ### Merge Conflicts
-Once a new feature that we deevlop in a separate branch is in good shape, we merge the separate branch back into `master` branch. We can do it using `git merge` command which take the independent snapshots and history of one Git branch, and tangle them into another.
+Once a new feature that we develop in a separate branch is in good shape, we merge the separate branch back into `master` branch. We can do it using `git merge` command which take the independent snapshots and history of one Git branch, and tangle them into another.
 
 Let's check that we are in `master` branch. Then, let's merge the `even-better-feature` branch into `master` branch. 
 
@@ -1022,14 +1022,25 @@ The merge we performed earlier is an example of **fast-forward** merge. This kin
 Before merging:
 ![fast_forward_merging_before](attachments/fast_forward_merging_before.png)
 
-After merging using fast-forward:
-![fast_forward_merging_afterpng](attachments/fast_forward_merging_after.png)
+After merging using fast-forward:![fast_forward_merging_afterpng](attachments/fast_forward_merging_after.png)
 
 On the other hand, a **three-way merge** is performed when the history of the merging branches has divered in some way, and there is not a nice linear path to combine them via fast-forwaring. This happens when a commit is made on one branch after the point when both the branches split. This could have happened if we made a commit on the master branch after creating the other branches such as `even-better-feature`. When this occues, Git will tie the branch histories together with a new commit. And merge the snapshots at the two branch tips with the most recent common ancestor, the commit before the divergence. To do this successfully, Git tries to figure out how to combine both snapshots. If the changes were made in different files, or in different parts of the same file, Git will take both changes and put them together in the result. If instead, the changes are made on the same part of the same file, Git won't know how to merge those changes, and the merge attempt will result in a merge conflict. This sounds scary, we will learn to solve those conflicts in next section.     
 
 ![three_way_merge](attachments/three_way_merge.png)
 
 ### Git Branches and Merging Cheat Sheet 
+
+| Command                   | Explanation & Link                     |
+|---------------------------|----------------------------------------|
+| `git branch`                | [Used to manage branches](https://git-scm.com/docs/git-branch) |
+| `git branch <name>`         | [Creates the branch](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) |
+| `git branch -d <name>`      | [Deletes the branch](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--D) |
+| `git branch -D <name>`      | [Forcibly deletes the branch](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--D) |
+| `git checkout <branch>`     | [Switches to a branch](https://git-scm.com/docs/git-checkout) |
+| `git checkout -b <branch>`  | Creates a new branch and [switches to it](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--bltnewbranchgt) |
+| `git merge <branch>`        | [Merge joins branches together](https://git-scm.com/docs/git-merge) |
+| `git merge --abort`         | If there are merge conflicts (meaning files are incompatible), `--abort` can be used to abort the merge action |
+| `git log --graph --oneline` | [This shows a summarized view of the commit history for a repo](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History) |
 
 
 ---
