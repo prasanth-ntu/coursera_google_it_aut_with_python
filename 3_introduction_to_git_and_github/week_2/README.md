@@ -1019,10 +1019,11 @@ P.S. We do not see a new commit as it's a fast-forward merge.
 
 The merge we performed earlier is an example of **fast-forward** merge. This kind of merge occues when all the commits in the checked out (currently active) branch are also in the branch that's being merged. We can say that the commit history of both the branches does not diverge. In these cases, all Git has to do is update the pointers of the branches to the same commit, and no actual merging needs to take place.  
 
-Before merging:
+Before merging:<br>
 ![fast_forward_merging_before](attachments/fast_forward_merging_before.png)
 
-After merging using fast-forward:![fast_forward_merging_afterpng](attachments/fast_forward_merging_after.png)
+After merging using fast-forward:<br>
+![fast_forward_merging_afterpng](attachments/fast_forward_merging_after.png)
 
 On the other hand, a **three-way merge** is performed when the history of the merging branches has divered in some way, and there is not a nice linear path to combine them via fast-forwaring. This happens when a commit is made on one branch after the point when both the branches split. This could have happened if we made a commit on the master branch after creating the other branches such as `even-better-feature`. When this occues, Git will tie the branch histories together with a new commit. And merge the snapshots at the two branch tips with the most recent common ancestor, the commit before the divergence. To do this successfully, Git tries to figure out how to combine both snapshots. If the changes were made in different files, or in different parts of the same file, Git will take both changes and put them together in the result. If instead, the changes are made on the same part of the same file, Git won't know how to merge those changes, and the merge attempt will result in a merge conflict. This sounds scary, we will learn to solve those conflicts in next section.     
 
