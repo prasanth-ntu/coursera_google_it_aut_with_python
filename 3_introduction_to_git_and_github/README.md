@@ -21,6 +21,9 @@ On top of search results, here are some great Git resources available online:
 
 
 ## To learn
-- SHAH1 - Cryptographic algorithm that creates a hash
+- [ ] SHAH1 - Cryptographic algorithm that creates a hash
   - https://en.wikipedia.org/wiki/SHA-1
   - https://github.blog/2017-03-20-sha-1-collision-detection-on-github-com/
+
+## To do
+  - [ ] Consolidate all cheat sheets into a master cheat sheet
